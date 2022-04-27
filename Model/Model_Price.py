@@ -5,7 +5,7 @@ import joblib
 import sys
 import os
 
-def predict_price=(Year,Mileage,State,Make,Model):
+def predict_price(Year,Mileage,State,Make,Model):
     reg = joblib.load(os.path.dirname(__file__) + '/car_pricing.pkl') 
     df_dum=pd.read_csv(os.path.dirname(__file__) + '/df_dum.csv')
     data=[[Year,Mileage,State,Make,Model]]
