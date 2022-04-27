@@ -65,7 +65,7 @@ class PriceApi(Resource):
         args = parser.parse_args()
         
         return {
-         "result": predict_price(args['Year','Mileage','State','Make','Model'])
+         "result": predict_price(args)
         }, 200
     
     
