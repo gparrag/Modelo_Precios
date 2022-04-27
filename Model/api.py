@@ -2,7 +2,7 @@
 from flask import Flask
 from flask_restplus import Api, Resource, fields
 import joblib
-from Model_Price import predict
+from Model_Price import predict_price
 
 app = Flask(__name__)
 
