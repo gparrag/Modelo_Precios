@@ -6,11 +6,11 @@ import sys
 import os
 
 def predict_price(Year,Mileage,State,Make,Model):
-    reg = joblib.load(os.path.dirname(__file__) + '/car_pricing.pkl') 
-    df_dum=pd.read_csv(os.path.dirname(__file__) + '/df_dum.csv')
+    reg = joblib.load(os.path.dirname(__file__) + '/car_pricing_model.pkl') 
+    encoder = joblib.load(os.path.dirname(__file__) + '/encoder.pkl') 
     data=[[Year,Mileage,State,Make,Model]]
     df = pd.DataFrame(data, columns=['Year','Mileage','State','Make','Model'])
-    newpredict = df.reindex(labels = df_dum['Columns'], axis = 1, fill_value = 0)
+    newpredict= encoder.transform(df)
     prediction = reg.predict(newpredict)
     
     return prediction
@@ -32,4 +32,3 @@ if __name__ == "__main__":
         
         print(url)
         print('Car Price: ', prediction1)    
-        
